@@ -28,7 +28,7 @@ with open('reports.json', encoding='utf-8') as f:
 
 @client.command(pass_context = True)
 @has_permissions(manage_roles=True, ban_members=True)
-async def warn(ctx,user:discord.User,*reason:str):
+async def warn(ctx,user:discord.User,*reason:str=None):
   if not reason:
     await client.say("Please provide a reason")
     return
