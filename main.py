@@ -31,7 +31,7 @@ with open('reports.json', encoding='utf-8') as f:
 @has_permissions(manage_roles=True, ban_members=True)
 async def warn(ctx,user:discord.User,*reason:str):
   if not reason:
-    await client.say("Please provide a reason")
+    await ctx.send("Please provide a reason")
     return
   reason = ' '.join(reason)
   for current_user in report['users']:
@@ -50,10 +50,10 @@ async def warn(ctx,user:discord.User,*reason:str):
 async def warnings(ctx,user:discord.User):
   for current_user in report['users']:
     if user.name == current_user['name']:
-      await client.say(f"{user.name} has been reported {len(current_user['reasons'])} times : {','.join(current_user['reasons'])}")
+      await ctx.send(f"{user.name} has been reported {len(current_user['reasons'])} times : {','.join(current_user['reasons'])}")
       break
   else:
-    await client.say(f"{user.name} has never been reported")  
+    await ctx.send(f"{user.name} has never been reported")  
 
 @warn.error
 async def kick_error(error, ctx):
