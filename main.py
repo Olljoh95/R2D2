@@ -1,5 +1,6 @@
 import discord
-from discord.ext import commands
+from discord.ext import commands,has_permissions, MissingPermissions
+import json
 import os
 
 client = commands.Bot(command_prefix="!")
@@ -25,7 +26,7 @@ with open('reports.json', encoding='utf-8') as f:
     report = {}
     report['users'] = []
 
-client = discord.ext.commands.Bot(command_prefix = '?')
+client = discord.ext.commands.Bot(command_prefix = '!')
 
 @client.command(pass_context = True)
 @has_permissions(manage_roles=True, ban_members=True)
