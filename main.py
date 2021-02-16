@@ -5,7 +5,7 @@ import json
 import os
 
 client = commands.Bot(command_prefix="!")
-token = "ODExMjE2MzI4MzgzNjYwMDcz.YCu-FA.JwiUyQYQfHqESy38mnbYncMo4dY"
+token = os.getenv("DISCORD_TOKEN")
 
 @client.event
 async def on_ready() :
